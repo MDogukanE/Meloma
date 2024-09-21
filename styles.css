@@ -1,0 +1,248 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFC0CB; /* Pembe arka plan */
+}
+
+.slider {
+    width: 50%; /* Slider'ın genişliği */
+    max-width: 600px; /* Maksimum genişlik */
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto; /* Ortalamak için */
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.slide {
+    width: 100%;
+    height: 600px; /* Yükseklik artırıldı */
+    box-sizing: border-box;
+    position: relative;
+    flex-shrink: 0;
+    clip-path: path("M 300 120 C 250 60 0 60 0 240 C 0 420 300 600 300 600 C 300 600 600 420 600 240 C 600 60 350 60 300 120 Z"); /* Sağ ve sol taraf düzgün */
+}
+
+
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: brightness(80%);
+    margin-top: 40px; /* Resmi aşağı taşımak için eklenebilir */
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%; /* Yükseklik ortalaması */
+    transform: translateY(-50%); /* Dikey ortala */
+    background-color: rgba(255, 255, 255, 0.8); /* Arka plan rengi */
+    border: none; /* Kenarlık yok */
+    padding: 15px; /* İçerik için boşluk */
+    cursor: pointer; /* İmleci göster */
+    font-size: 18px; /* Yazı boyutu */
+    border-radius: 50%; /* Yuvarlak yap */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Gölgelendirme */
+}
+
+.prev {
+    left: 20px; /* Solda konumlandır */
+}
+
+.next {
+    right: 20px; /* Sağda konumlandır */
+}
+
+
+
+.glow-text {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 36px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #ffffff;
+    text-shadow: 
+        0 0 5px #ffcc00,
+        0 0 10px #ffcc00,
+        0 0 15px #ffcc00,
+        0 0 20px #ffcc00;
+    animation: glitter 1.5s infinite alternate;
+    position: relative; /* Pozisyonu ayarlamak için */
+}
+@keyframes glitter {
+    0% {
+        text-shadow: 
+            0 0 5px #ffcc00,
+            0 0 10px #ffcc00,
+            0 0 15px #ffcc00,
+            0 0 20px #ffcc00;
+    }
+    100% {
+        text-shadow: 
+            0 0 10px #ffffff,
+            0 0 20px #ffffff,
+            0 0 30px #ffcc00,
+            0 0 40px #ffcc00;
+    }
+}
+.heart {
+    display: inline-block; /* Yatayda yan yana dizilmesi için */
+    background: red;
+    position: relative;
+    height: 30px; /* Kalp boyutu */
+    width: 30px; /* Kalp boyutu */
+    transform: rotate(-45deg) scale(1);
+    animation: pulse 2s linear infinite;
+    margin-left: 10px; /* Metin ile kalp arasında boşluk */
+}
+
+.heart::after {
+    background: inherit;
+    border-radius: 50%; /* Daire yap */
+    content: '';
+    position: absolute;
+    top: -50%; /* Üst kısmı */
+    left: 0;
+    height: 30px; /* Kalp boyutu */
+    width: 30px; /* Kalp boyutu */
+}
+
+.heart::before {
+    background: inherit;
+    border-radius: 50%; /* Daire yap */
+    content: '';
+    position: absolute;
+    top: 0; 
+    right: -50%; /* Sağ kısımdan */
+    height: 30px; /* Kalp boyutu */
+    width: 30px; /* Kalp boyutu */
+}
+
+@keyframes pulse {
+    0% {
+        transform: rotate(-45deg) scale(1);
+        opacity: 0;
+    }
+    50% {
+        transform: rotate(-45deg) scale(1.3);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(-45deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fly {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1; /* Başlangıç opasitesi */
+    }
+    50% {
+        transform: translateY(-200px) scale(1.2);
+        opacity: 0.8; /* Yükseklikte opasite değişimi */
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.flying-heart {
+    position: absolute;
+    width: 30px; /* Kalp boyutu */
+    height: 30px;
+    background: red;
+    transform: rotate(-45deg);
+    animation: fly 5s linear infinite; /* Uçuş animasyonu */
+    opacity: 0.9; /* Kalp opasitesi */
+}
+
+.flying-heart::after, .flying-heart::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: inherit;
+}
+
+.flying-heart::after {
+    top: -15px;
+    left: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.flying-heart::before {
+    top: 0;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+}
+
+@keyframes fly-stars {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1; /* Başlangıç opasitesi */
+    }
+    50% {
+        transform: translateY(-200px) scale(1.2);
+        opacity: 0.8; /* Yükseklikte opasite değişimi */
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.flying-star {
+    position: absolute;
+    width: 30px; /* Yıldız boyutu */
+    height: 30px;
+    background: yellow;
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%, 
+        79% 91%, 50% 70%, 21% 91%, 32% 57%, 
+        2% 35%, 39% 35%
+    ); /* Yıldız şekli */
+    animation: fly-stars 5s linear infinite; /* Uçuş animasyonu */
+    opacity: 0.9; /* Yıldız opasitesi */
+}
+
+.flying-star:nth-child(odd) {
+    animation-duration: 6s; /* Farklı hızlar */
+}
+
+.flying-star:nth-child(even) {
+    animation-duration: 4.5s; /* Farklı hızlar */
+}
+
+@keyframes fly-image {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-200px) scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.flying-image {
+    position: absolute;
+    width: 60px; /* Fotoğrafın genişliği */
+    height: 60px; /* Fotoğrafın yüksekliği */
+    background-size: cover; /* Fotoğrafı tam olarak göster */
+    border-radius: 50%; /* Yuvarlak kafa fotoğrafı */
+    animation: fly-image 5s linear infinite;
+    opacity: 0.9;
+}
